@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Reservation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background: #333;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.hero {
+    background: url('restaurant.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-text {
+    color: #fff;
+    text-align: center;
+}
+
+.hero-text h2 {
+    font-size: 3rem;
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+.btn {
+    background: #e8491d;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+.reservation {
+    padding: 2rem 0;
+}
+
+.reservation h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+form {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+form label {
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+form input {
+    margin-bottom: 1rem;
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+form button {
+    background: #e8491d;
+    color: #fff;
+    padding: 0.8rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+footer {
+    background: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+</style>
+<body>
+    <header>
+        <div class="container">
+            <h1>Restaurant Name</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#reservation">Reservation</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h2>Welcome to Our Restaurant</h2>
+            <p>Experience the finest dining with us.</p>
+            <a href="#reservation" class="btn">Book a Table</a>
+        </div>
+    </section>
+
+    <section id="reservation" class="reservation">
+        <div class="container">
+            <h2>Make a Reservation</h2>
+            <form id="reservationForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="date">Date:</label>
+                <input type="date" id="date" name="date" required>
+
+                <label for="time">Time:</label>
+                <input type="time" id="time" name="time" required>
+
+                <label for="guests">Number of Guests:</label>
+                <input type="number" id="guests" name="guests" required min="1">
+
+                <button type="submit" class="btn">Confirm Reservation</button>
+            </form>
+            <div id="confirmationMessage"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Restaurant Name. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script >
+        document.getElementById('reservationForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    // Form data
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const guests = document.getElementById('guests').value;
+
+    // Placeholder for sending data to the server (AJAX, Fetch API)
+    // You would send a POST request to the server to handle the reservation and email confirmation.
+    // e.g., fetch('/reserve', { method: 'POST', body: JSON.stringify({name, email, date, time, guests}) })
+
+    document.getElementById('confirmationMessage').innerText = `Reservation confirmed for ${guests} guests on ${date} at ${time}. A confirmation email has been sent to ${email}.`;
+    
+    // Reset the form
+    document.getElementById('reservationForm').reset();
+});
+
+    </script>
+</body>
+</html>
